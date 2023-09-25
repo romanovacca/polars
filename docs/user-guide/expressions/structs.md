@@ -45,7 +45,7 @@ Polars will interpret a `dict` sent to the `Series` constructor as a `Struct`:
 
 !!! note "Constructing `Series` objects"
 
-    Note that `Series` here was constructed with the `name` of the series in the begninng, followed by the `values`. Providing the latter first
+    Note that `Series` here was constructed with the `name` of the series in the beginning, followed by the `values`. Providing the latter first
     is considered an anti-pattern in Polars, and must be avoided.
 
 ### Extracting individual values of a `Struct`
