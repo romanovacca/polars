@@ -60,7 +60,7 @@ Let's say that we needed to obtain just the `movie` value in the `Series` that w
 
 ### Renaming individual keys of a `Struct`
 
-What if we need to rename individual `field`s of a `Struct` column? We first convert the `rating_Series` object to a `DataFrame` so that we can view the changes easily, and then use the `rename_fields` method:
+What if we need to rename individual `field`s of a `Struct` column? We first convert the `rating_series` object to a `DataFrame` so that we can view the changes easily, and then use the `rename_fields` method:
 
 {{code_block('user-guide/expressions/structs','series_struct_rename',['struct.rename_fields'])}}
 
@@ -84,7 +84,7 @@ We can identify the unique cases at this level also with `is_unique`!
 
 ### Multi-column ranking
 
-Suppose, given that we know there are duplicates, we want to choose which rank gets a higher priority. We define _Count_ of ratings to be more important than the actual `Avg_Rating` themselves, and only use it to break a tie. We can then do:
+Suppose, given that we know there are duplicates, we want to choose which rank gets a higher priority. We define `Count` of ratings to be more important than the actual `Avg_Rating` themselves, and only use it to break a tie. We can then do:
 
 {{code_block('user-guide/expressions/structs','struct_ranking',['is_duplicated', 'struct'])}}
 
