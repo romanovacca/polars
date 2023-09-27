@@ -3063,7 +3063,7 @@ class Series:
         else:
             return self._from_pyseries(self._s.sort(descending))
 
-    def top_k(self, k: int = 5) -> Series:
+    def top_k(self, k: int | IntoExprColumn = 5) -> Series:
         r"""
         Return the `k` largest elements.
 
@@ -3094,7 +3094,7 @@ class Series:
 
         """
 
-    def bottom_k(self, k: int = 5) -> Series:
+    def bottom_k(self, k: int | IntoExprColumn = 5) -> Series:
         r"""
         Return the `k` smallest elements.
 
