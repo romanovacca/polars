@@ -19,6 +19,8 @@ from polars.datatypes import (
     UInt16,
     UInt32,
     UInt64,
+    Object,
+    Struct,
 )
 
 if TYPE_CHECKING:
