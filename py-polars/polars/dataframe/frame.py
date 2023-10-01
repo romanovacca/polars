@@ -4136,11 +4136,11 @@ class DataFrame:
         df_metrics = self.select(
             F.all().count().prefix("count:"),
             F.all().null_count().prefix("null_count:"),
-            # F.all().mean().prefix("mean:"),
-            # F.all().std().prefix("std:"),
-            # F.all().min().prefix("min:"),
-            # *percentile_exprs,
-            # F.all().max().prefix("max:"),
+            F.all().mean().prefix("mean:"),
+            F.all().std().prefix("std:"),
+            F.all().min().prefix("min:"),
+            *percentile_exprs,
+            F.all().max().prefix("max:"),
         ).row(0)
 
         # reshape wide result

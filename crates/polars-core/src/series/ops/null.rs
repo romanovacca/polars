@@ -53,7 +53,6 @@ impl Series {
             },
             #[cfg(feature = "object")]
             DataType::Object(_) => {
-                dbg!("In the object");
                 let series = vec![Series::full_null(name, size, &DataType::Utf8)];
                 let struct_chunked = StructChunked::new(name, &series).unwrap();
                 struct_chunked.into_series()

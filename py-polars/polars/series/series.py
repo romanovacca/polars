@@ -1593,17 +1593,18 @@ class Series:
                 "50%": str(self.dt.median()),
                 "max": str(self.dt.max()),
             }
-        # elif self.is_object():
-        #     stats = {
-        #         "count": self.len(),
-        #         "null_count": self.null_count(),
-        #     }
-        # elif self.is_struct():
-        #     stats = {
-        #         "count": self.len(),
-        #         "null_count": self.null_count(),
-        #         "unique": len(self.unique()),
-        #     }
+        elif self.is_object():
+            stats = {
+                "count": self.len(),
+                "null_count": self.null_count(),
+                # self.unique() is not yet implemented for Object
+            }
+        elif self.is_struct():
+            stats = {
+                "count": self.len(),
+                "null_count": self.null_count(),
+                "unique": len(self.unique()),
+            }
         else:
             raise TypeError("this type is not supported")
 
@@ -3944,7 +3945,7 @@ class Series:
 
         """
         return self.dtype in NUMERIC_DTYPES
-    
+
     def is_integer(self, signed: bool | None = None) -> bool:
         """
         Check if this Series datatype is an integer (signed or unsigned).
@@ -4042,32 +4043,32 @@ class Series:
         """
         return self.dtype is Utf8
 
-    def is_object(self)-> Object:
+    def is_object(self) -> Object:
         """
         Check if this Series datatype is an Object.
 
         Examples
         --------
-        >>> s = pl.Series([{'a': 1, 'b': 2}], dtype=pl.Object)
+        >>> s = pl.Series([{"a": 1, "b": 2}], dtype=pl.Object)
         >>> s.is_object()
         True
 
         """
         return self.dtype is Object
-    
-    def is_struct(self)-> Object:
+
+    def is_struct(self) -> Object:
         """
         Check if this Series datatype is a Struct.
 
         Examples
         --------
-        >>> s = pl.Series([{'a': 1, 'b': 2}])
+        >>> s = pl.Series([{"a": 1, "b": 2}])
         >>> s.is_struct()
         True
 
         """
         return isinstance(self.dtype, Struct)
-    
+
     def view(self, *, ignore_nulls: bool = False) -> SeriesView:
         """
         Get a view into this Series data with a numpy array.
